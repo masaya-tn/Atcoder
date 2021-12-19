@@ -1,0 +1,20 @@
+n = int(input())
+a = list(map(int,input().split()))
+alice = 0
+bob = 0
+
+sorted_list = sorted(a, reverse=True)
+for i in range(n):
+  if i % 2 == 0:
+    alice += sorted_list[i]
+  else:
+    bob += sorted_list[i]
+print(alice - bob)
+
+
+#他の人の答え
+n = int(input())
+a = sorted(list(map(int, input().split())), reverse=True)
+print(sum(a[::2]) - sum(a[1::2]))
+
+#スライスを使って簡単にリストの偶数要素だけ取り出している
