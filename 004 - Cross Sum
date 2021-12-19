@@ -1,0 +1,29 @@
+H 行 W 列のマス目があります。上から i (1≤i≤H) 行目、左から j (1≤j≤W) 列目にあるマス (i,j) には、整数 Ai,jが書かれています。 
+すべてのマス (i,j) (1≤i≤H,1≤j≤W) について、以下の値を求めてください。
+マス (i,j) と同じ行または同じ列にあるマス（自分自身を含む）に書かれている整数をすべて合計した値
+
+x,y = map(int,input().split())
+nums = []
+
+nums = [list(map(int,input().split())) for i in range(y)] (<-ここxに変えたら通った)
+
+#各行の和
+gyo_sum = [sum(nums[i]) for i in range(x)]
+
+retsu_sum = []
+#各列の和
+for i in range(y):
+  retsu = []
+  for j in range(x):
+    retsu.append(nums[j][i])
+  retsu_sum.append(sum(retsu))
+   
+ans = []
+for i in range(x):
+  ans.append([gyo_sum[i] + retsu_sum[j] - nums[i][j] for j in range(y)])
+ 
+for i in range(x):
+  print(*ans[i])
+  
+pypyで通った
+最後のprint(*ans[i]) の*は、リストをカッコとコンマなしで出力してくれる。
