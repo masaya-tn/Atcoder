@@ -1,0 +1,29 @@
+問題文
+シカのAtCoDeerくんは二次元平面上で旅行をしようとしています。 
+AtCoDeerくんの旅行プランでは、時刻 0 に 点 (0,0) を出発し、 1 以上 N 以下の各 i に対し、時刻 tiに 点 (x i,y i) を訪れる予定です。
+
+AtCoDeerくんが時刻 t に 点 (x,y) にいる時、 時刻 t+1 には 点 (x+1,y), (x−1,y), (x,y+1), (x,y−1) のうちいずれかに存在することができます。 
+その場にとどまることは出来ないことに注意してください。 AtCoDeerくんの旅行プランが実行可能かどうか判定してください。
+
+旅行プランが実行可能ならYesを、不可能ならNoを出力してください。
+
+n = int(input())
+t_pre = 0
+x_pre = 0
+y_pre = 0
+
+for i in range(n):
+  t,x,y = map(int,(input().split()))
+  time = abs((t - t_pre))
+  dist = abs((x - x_pre)) + abs((y - y_pre))
+  if time < dist or (time + dist) % 2 != 0:
+    print("No")
+    exit()
+  x_pre = x
+  y_pre = y
+  t_pre = t
+print("Yes")
+
+難しかった
+辿り着けるのはどういう場合か、辿り着けないのはどういう場合か、という思考で問題を捉えられていなかった。
+2回目以降の移動は現在地点から目的地点への移動ということを考慮していなかった。
