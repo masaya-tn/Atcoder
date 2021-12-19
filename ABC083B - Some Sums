@@ -1,0 +1,13 @@
+a,b,c = map(int,input().split())
+total = 0
+
+for i in range(a+1):
+  x = [int(l) for l in str(i)]
+  a_sum = sum(x)
+  if a_sum >= b and a_sum <= c:
+    total += i
+
+print(total)
+
+#リスト内包表記を使っている
+  
