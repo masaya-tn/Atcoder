@@ -1,0 +1,23 @@
+A,B,C = map(int, input().split())
+
+def yakusu(num):
+  l = []
+  for i in range(1,num+1):
+    if num % i == 0:
+      l.append(i)
+  return(l)
+
+Al = yakusu(A)
+Bl = yakusu(B)
+Cl = yakusu(C)
+
+koyakusu = list((set(Al) & set(Bl) & set(Cl)))
+MK = max(koyakusu)
+ans = 0
+
+for i in [A,B,C]:
+  if MK < i:
+    ans += i / MK - 1
+print(round(ans))
+
+#TLE
