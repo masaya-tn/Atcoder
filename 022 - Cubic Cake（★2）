@@ -21,3 +21,14 @@ for i in [A,B,C]:
 print(round(ans))
 
 #TLE
+
+#再提出
+import math
+A,B,C = map(int, input().split())
+
+MK = math.gcd(math.gcd(A,B),C)
+
+print((A+B+C) // MK - 3)
+
+#　mathモジュールを使えば早い
+# //の方が便利
