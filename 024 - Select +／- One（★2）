@@ -1,0 +1,14 @@
+N,K = map(int,input().split())
+A = list(map(int,input().split()))
+B = list(map(int,input().split()))
+
+dist = 0
+for i in range(N):
+  dist += abs(B[i] - A[i])
+
+if dist > K or (dist + K) % 2 != 0:
+  print("No")
+else:
+  print("Yes")
+  
+  # 1発AC!
