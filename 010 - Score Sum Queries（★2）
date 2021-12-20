@@ -1,0 +1,19 @@
+n = int(input())
+stu = [list(map(int,input().split())) for i in range(n)]
+
+m = int(input())
+q = [list(map(int,input().split())) for i in range(m)]
+
+for i in range(m):
+  one = 0
+  two = 0
+  for j in range(q[i][1] - q[i][0] +1):
+    if stu[q[i][0] -1 + j][0] == 1:
+      one += stu[q[i][0] -1 + j][1]
+    elif stu[q[i][0] -1 + j][0] == 2:
+      two += stu[q[i][0] -1 + j][1]
+    
+  print(one,two)
+
+半分TLE
+予め点数の累積和を出しておけば計算量が少なくなる。
