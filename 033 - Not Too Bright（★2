@@ -1,0 +1,16 @@
+# HかWのどちらかが1の場合、制約に引っかからないというコーナーケースに気づかなかった
+H,W = map(int,input().split())
+ 
+if H == 1 or W == 1:
+  print(H*W)
+else:
+  print(((H+1) // 2) * ((W+1) // 2))
+  
+# 一個飛ばしの数を数えたい場合、元の数の偶奇にかかわらず+1してから２で割ればいい
+H,W = map(int,input().split())
+
+if H == 1 or W == 1:
+  print(H*W)
+else:
+  print(((H+1) // 2) * ((W+1) // 2))
+
