@@ -1,0 +1,40 @@
+# TLE
+N,P,Q = map(int,input().split())
+A = list(map(int,input().split()))
+ans = 0
+
+for i in range(N-4):
+  for j in range(i+1, N-3):
+    for k in range(j+1, N-2):
+      for l in range(k+1, N-1):
+        for m in range(l+1, N):
+          if (A[i] * A[j] * A[k] * A[l] * A[m]) % P == Q:
+            ans += 1
+print(ans)
+
+# 参考にしたコード
+n, p, q = map(int,input().split())
+
+A = list(map(int, input().split()))
+
+ans = 0
+for i in range(n-4):
+    for j in range(i+1,n-3):
+        for k in range(j+1,n-2):
+            for l in range(k+1,n-1):
+                for m in range(l+1,n):
+                    if A[i] * A[j]%p * A[k]%p * A[l]%p * A[m]%p == q:
+                        ans += 1
+
+print(ans)
+
+# (A[i] * A[j] * A[k] * A[l] * A[m]) % P == Q
+# A[i]%p * A[j]%p * A[k]%p * A[l]%p * A[m]%p == q
+# 上と下では計算量がだいぶ変わる
+# 上では計算途中（A[i] * A[j] * A[k] * A[l] * A[m]）が非常に大きい値になりうまくいかない
+
+# A[i] * A[j]%p * A[k]%p * A[l]%p * A[m]%pについて
+# A[i] * A[j] * A[k]%p * A[l]%p * A[m]%pでも
+# A[i] * A[j] * A[k] * A[l]%p * A[m]%pでも
+# A[i] * A[j] * A[k] * A[l] * A[m]%pでも全部同じ結果
+
