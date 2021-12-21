@@ -1,0 +1,35 @@
+# TLE
+import re
+n = int(input())
+S = [input() for i in range(n)]
+
+count = 1
+users = []
+for i in S:
+  if (i in users) != True and re.fullmatch(r'[a-z0-9]{1,15}', i):
+    users.append(i)
+    print(count)
+  count += 1
+  
+# これでもダメ
+n = int(input())
+
+users = []
+for i in range(n):
+  user = input()
+  if (user in users) != True:
+    users.append(user)
+    print(i + 1)
+  
+# 通った
+N = int(input())
+S = set()
+ 
+for i in range(N):
+  s = input()
+  if s not in S:
+    S.add(s)
+    print(i + 1)
+  
+# in演算子をリストに使うと計算量が大きくなるみたい
+  集合(set)だと抑えられる
