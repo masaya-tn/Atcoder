@@ -1,0 +1,30 @@
+078 - Easy Graph Problem（★2）
+
+N,M = map(int, input().split())
+d = {}
+
+for i in range(M):
+  a,b = map(int,input().split())
+  if (a in d) == True:
+    d[a].append(b)
+  else:
+    d[a] = [b]
+  
+  if (b in d) == True:
+    d[b].append(a)
+  else:
+    d[b] = [a]
+
+ans = 0
+for i in range(N):
+  count = 0
+  for j in d[i + 1]:
+    if (i + 1) > j:
+      count += 1
+  if count == 1:
+    ans += 1
+
+print(ans)
+
+#　コメント書く方が早い
+#　辞書の各キーに値があるか調べて、appendするか分けたが、事前に各キーにからのリストを追加した方が早かった
