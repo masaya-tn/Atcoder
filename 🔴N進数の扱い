@@ -1,0 +1,22 @@
+067 - Base 8 to 9（★2）
+
+N,k = map(int,input().split())
+
+for i in range(k):
+  l = []
+#Nを10進数に変換
+  num = int(str(N),8)
+
+#Nが0の場合の条件分岐
+  if N == 0:
+    print(0)
+    exit()
+  else:
+#numを9進数に変換 1355022011
+    while num > 0:
+      l.insert(0,str(num % 9))
+      num = num // 9
+    num9 = ''.join(l)
+    N = int(num9.replace('8', '5'))
+    
+print(N)
