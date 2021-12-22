@@ -1,0 +1,29 @@
+002 - Encyclopedia of Parentheses
+
+from itertools import product
+N = int(input())
+
+# カッコ列 S が整合しているかどうか
+def isvalid(S):
+  ans = 0
+
+  for i in S:
+    if i == '(':
+      ans += 1
+    else:
+      ans -= 1
+    
+    #途中で０を下回るとダメ
+    if ans < 0:
+      return(False)
+      
+
+  if ans == 0:
+    return(True)
+  else:
+    return(False)
+
+
+for S in product(['(', ')'], repeat=N):
+  if (isvalid(S)):
+    print(''.join(S))
