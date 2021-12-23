@@ -1,0 +1,50 @@
+007 - CP Classes（★3）
+
+# 半分AC半分TLE
+N = int(input())
+A = list(map(int,input().split()))
+A.sort()
+
+Q = int(input())
+for i in range(Q):
+  B = int(input())
+  #Aの全てより生徒のレートが高い場合はAの最後との絶対値が不満度
+  if B > A[-1]:
+    print(abs(B - A[-1]))
+  elif A[0] > B:
+    print(abs(A[0] - B))
+  else:
+    bef = ''
+    for j in A:
+      #差が正になったタイミングで一つ前と比べて不満度の低い方をdiffに追加
+      if (j - B) >= 0:
+        if abs(bef - B) >= abs(j - B):
+          print(abs(j - B))
+          break
+        else:
+          print(abs(bef - B))
+          break
+      bef = j
+
+# 二分探索はbisectを使う
+import bisect
+N = int(input())
+A = list(map(int,input().split()))
+A.sort()
+
+B = []
+Q = int(input())
+for i in range(Q):
+  B.append(int(input()))
+
+for b in B:
+  ind = bisect.bisect(A, b)
+  if ind == 0:
+    print(abs(A[0] - b))
+  elif ind == N:
+    print(abs(A[-1] - b))
+  else:
+    if abs(A[ind] - b) >= abs(A[ind - 1] - b):
+      print(abs(A[ind - 1] - b))
+    else:
+      print(abs(A[ind] - b))
