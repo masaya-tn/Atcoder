@@ -1,0 +1,36 @@
+016 - Minimum Coins（★3）
+
+N = int(input())
+A,B,C = map(int,input().split())
+ 
+ans = 9999
+ 
+for i in range(min(N//A + 1, 10 ** 4)):
+  for j in range(min(N//B + 1, 10 ** 4)):
+    remain = N - ((i * A) + (j * B))
+    if (remain % C) == 0:
+      k = remain // C
+      if k >= 0:
+        ans = min(ans, i + j + k)
+      
+print(ans)
+
+# 下記のように、ABCをソートしてから、価値の大きい硬貨から順に数を大きくしていくようにすれば、最初の組み合わせが最小かと思ったが、WAがでた。
+# 原因は不明
+
+N = int(input())
+ABC = list(map(int,input().split()))
+ABC.sort()
+
+ans = 9999
+ 
+for i in range(min(N//ABC[0] + 1, 10 ** 4)):
+  for j in range(min(N//ABC[1] + 1, 10 ** 4)):
+    remain = N - ((i * ABC[0]) + (j * ABC[1]))
+    if (remain % ABC[2]) == 0:
+      k = remain // ABC[2]
+      if k >= 0 and k < 10 ** 4:
+        print(i + j + k)
+        exit()
+      
+
