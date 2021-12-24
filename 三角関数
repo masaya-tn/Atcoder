@@ -1,0 +1,29 @@
+018 - Statue of Chokudai
+
+import math
+
+T = int(input())
+L,X,Y = map(int,input().split())
+Q = int(input())
+
+r = L / 2
+p = math.pi
+for i in range(Q):
+  e = int(input())
+  #回転角度
+  angle = 2 * p * e / T
+
+  #観覧車の座標
+  ex = 0
+  ey = - r * math.sin(angle)
+  ez = r - r * math.cos(angle)
+
+  #俯角
+  #xy平面上での像と観覧車の距離
+  d2 = X ** 2 + (ey - Y) ** 2
+  dist = pow(d2, 0.5)
+  rad = math.atan2(ez, dist)
+  print(math.degrees(rad))
+  
+#観覧車と像の距離求めてsinで角度出してもいい
+  
