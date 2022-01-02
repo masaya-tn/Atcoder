@@ -1,0 +1,27 @@
+046 - I Love 46
+
+N = int(input())
+A = list(map(int,input().split()))
+B = list(map(int,input().split()))
+C = list(map(int,input().split()))
+
+X = {i:0 for i in range(46)}
+Y = {i:0 for i in range(46)}
+Z = {i:0 for i in range(46)}
+
+for i in A:
+  X[i % 46] += 1
+for i in B:
+  Y[i % 46] += 1
+for i in C:
+  Z[i % 46] += 1
+
+#足して46の倍数になる組み合わせを調べる
+ans = 0
+for i in range(46):
+  for j in range(46):
+    k = (92 - i - j) % 46
+    ans += X[i] * Y[j] * Z[k]
+
+print(ans)
+
