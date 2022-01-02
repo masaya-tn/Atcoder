@@ -1,0 +1,40 @@
+038 - Large LCM
+# TLE
+
+A,B = map(int,input().split())
+
+def soinsu(num):
+  divisors = []
+  for i in range(2,num + 1):
+    while num % i == 0:
+      divisors.append(i)
+      num = num // i
+  return(divisors)
+
+divisorsA = soinsu(A)
+divisorsB = soinsu(B)
+
+setA = set(divisorsA)
+setB = set(divisorsB)
+union = list(setA.union(setB))
+
+ans = []
+for i in union:
+  A = divisorsA.count(i)
+  B = divisorsB.count(i)
+  if A > B:
+    for j in range(A):
+      ans.append(i)
+  else:
+    for j in range(B):
+      ans.append(i)
+
+lcm = 1
+for i in ans:
+  lcm = lcm * i
+
+if lcm > 10 ** 18:
+  print("Large")
+else:
+  print(lcm)
+      
