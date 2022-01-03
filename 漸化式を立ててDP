@@ -1,0 +1,18 @@
+# 050 - Stair Jump
+
+import itertools
+N,L = map(int, input().split())
+
+ans = 0
+if N >= L:
+  countL = N // L
+  for l in range(countL + 1):
+    com = [i+1 for i in range(N - (l * L) + l)]
+    com_list = list(itertools.combinations(com,l))
+    ans += len(com_list)
+  print(ans)
+else:
+  print(1)
+
+# ロジックは間違っていないがTLE
+
