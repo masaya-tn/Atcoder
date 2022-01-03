@@ -16,3 +16,17 @@ else:
 
 # ロジックは間違っていないがTLE
 
+#動的計画法を使う
+
+N,L = map(int, input().split())
+
+dp = []
+for i in range(N+1):
+  if i < L:
+    dp.append(1)
+  else:
+    dp.append(dp[i - 1] + dp[i - L])
+  
+pat = dp[-1]
+
+print(pat % ((10 ** 9) + 7))
