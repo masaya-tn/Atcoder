@@ -1,0 +1,19 @@
+048 - I will not drop out
+
+N,K = map(int,input().split())
+points = []
+for i in range(N):
+  A,B = map(int,input().split())
+  AB = [A - B, B]
+
+  for i in AB:
+    points.append(i)
+
+points.sort(reverse=True)
+ans = points[0:K]
+
+print(sum(ans))
+
+
+# 場合の数で全探索をやろうとしていたのでうまくいかなかった
+最大最小が絡むときはsortで解くことも考える
