@@ -1,0 +1,21 @@
+052 - Dice Product
+
+N = int(input())
+sumA = []
+
+for i in range(N):
+  l = list(map(int,input().split()))
+  sumA.append(sum(l))
+
+if N == 1:
+  print(sumA[0])
+else:
+  ans = 1
+  for i in sumA:
+    ans = ans * i
+
+  print(ans % (10 ** 9 + 7))
+  
+  
+# for文を入れ子にする数を,Nによって変える方法を考えることしかできず、因数分解に考えが及ばなかった
+# 複雑な問題で小さいケースを考えるのは重要な考察典型テクニック
