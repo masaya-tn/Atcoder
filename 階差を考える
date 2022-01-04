@@ -1,0 +1,24 @@
+064 - Uplift
+
+N,Q = map(int,input().split())
+A = list(map(int,input().split()))
+B = []
+now = 0
+for i in range(N-1):
+  B.append(A[i + 1] - A[i])
+  now += abs(A[i + 1] - A[i])
+
+for i in range(Q):
+  L,R,V = map(int,input().split())
+  
+  if L != 1:
+    now += abs(B[L - 2] + V) - abs(B[L - 2])
+    B[L - 2] += V
+  if R != N:
+    now += abs(B[R - 1] - V) - abs(B[R - 1])
+    B[R - 1] -= V
+  
+  print(now)
+
+# 無闇にリストを作るのではなく、一部の変化分を記録していくだけで早くできる
+# ちょっとしたミスが多い、紙に書くのとコメント書くことを徹底する
