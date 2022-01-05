@@ -1,0 +1,15 @@
+069 - Colorful Blocks 2
+
+N,K = map(int,input().split())
+mod = 10 ** 9 + 7
+
+if K <= 2 and K < N:
+  print(0)
+elif N == 1:
+  print(K)
+else:
+  print(K * (K - 1) * pow(K - 2, N - 2, mod) % mod)
+
+
+# 繰り返し二乗法は理解した
+# mod計算では、最後に全体の余りを出すようにすれば、掛け算の途中で何度余りを計算してもいい。
