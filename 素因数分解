@@ -1,0 +1,36 @@
+075 - Magic For Balls
+
+N = int(input())
+
+def prime_factorize(num):
+  a = []
+  if num % 2 == 0:
+    while num % 2 == 0:
+      num //= 2
+      a.append(2)
+  
+  f = 3
+  while f * f <= num:
+    if num % f == 0:
+      num //= f
+      a.append(f)
+    else:
+      f += 2
+
+  if num != 1:
+    a.append(num)
+  return a
+  
+a = prime_factorize(N)
+l = len(a)
+
+ans = 0
+while l > 1:
+  if l % 2 == 0:
+    l //= 2
+    ans += 1
+  else:
+    l = (l // 2) + 1
+    ans += 1
+
+print(ans)
