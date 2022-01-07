@@ -1,0 +1,26 @@
+076 - Cake Cut
+
+N = int(input())
+A = list(map(int,input().split()))
+cake = sum(A)
+A += A
+valu = cake // 10
+ 
+befo = 0
+j = 0
+for i in range(N):
+  while befo <= valu:
+    befo += A[j]
+    j += 1
+    
+    if befo == valu:
+      print('Yes')
+      exit()
+  
+  befo -= A[i]
+ 
+print('No')
+
+
+#始めはほぼ全パターンを探索するコードを書いてTLE
+#探索すべきはケーキの十分の一の値の前後だけなので、大幅に計算量を減らせる
