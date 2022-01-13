@@ -1,0 +1,27 @@
+N,M = map(int,input().split())
+lake = []
+for i in range(N):
+  lake.append(list(input()))
+
+def dfs(x,y):
+  #現在地
+  lake[y][x] = '.'
+
+  for dx in range(-1, 2):
+    for dy in range(-1, 2):
+      nx = dx + x
+      ny = dy + y
+
+      if -1 < nx < M and -1 < ny < N and lake[ny][nx] == 'W':
+        #再帰関数
+        dfs(nx,ny)
+  return
+
+cnt = 0
+for y in range(N):
+  for x in range(M):
+    if lake[y][x] == 'W':
+      dfs(x,y)
+      cnt += 1
+
+print(cnt)
