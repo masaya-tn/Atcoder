@@ -1,0 +1,16 @@
+N,A,B = map(int,input().split())
+P,Q,R,S = map(int,input().split())
+
+ans = []
+for i in range(P, Q + 1):
+  l = []
+  for j in range(R, S + 1):
+    if i - j == A - B or i + j == A + B:
+      l.append('#')
+    else:
+      l.append('.')
+    
+  print(''.join(l))
+  
+＃　条件反射的に全探索するのでは無く、求められている範囲だけを考えるだけでいいのでは無いかと考える
+　　　　イメージしにくい問題でも、図に書いてみるとわかりやすくなりコードに落とし込むのが簡単になることがある
