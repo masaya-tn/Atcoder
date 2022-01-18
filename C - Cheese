@@ -1,0 +1,20 @@
+N,W = map(int,input().split())
+l = [list(map(int,input().split())) for i in range(N)]
+l.sort(reverse = True)
+
+ans = 0
+for i in l:
+  if i[1] < W:
+    ans += i[0] * i[1]
+    W -= i[1]
+  else:
+    ans += i[0] * W
+    break
+
+print(ans)
+
+＃　辞書でソートするとうまくいかなかった
+　　　　二次元配列でもソートできる
+  
+  
+
