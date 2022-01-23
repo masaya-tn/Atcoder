@@ -1,0 +1,20 @@
+N = int(input())
+l = []
+total = 0
+for i in range(N):
+  A,B = map(int,input().split())
+  total += A / B
+  l.append([A, A/B])
+
+ans_t = total / 2
+ans = 0
+for i in l:
+  if ans_t > i[1]:
+    ans_t -= i[1]
+    ans += i[0]
+  else:
+    t = ans_t / i[1]
+    ans += t * i[0]
+    break
+
+print(ans)
