@@ -1,0 +1,17 @@
+import heapq
+
+N,K = map(int,input().split())
+P = list(map(int,input().split()))
+
+que = P[0:K]
+print(min(que))
+heapq.heapify(que)
+
+for i in range(K, N):
+  heapq.heappush(que, P[i])
+  heapq.heappop(que)
+  mini = heapq.heappop(que)
+  print(mini)
+  heapq.heappush(que, mini)
+
+#優先度付きキュー(pythonではheapq)とは、最小値の取り出しや、新しい要素を追加したときの優先度付けを高速で行ってくれる
