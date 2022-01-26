@@ -1,0 +1,20 @@
+from collections import defaultdict
+
+N,K = map(int,input().split())
+A = list(map(int,input().split()))
+
+S = [0]
+for i in range(N):
+  S.append(S[i] + A[i])
+
+d = defaultdict(int)
+ans = 0
+
+for i in range(N+1):
+  ans += d[S[i]]
+  d[S[i] + K] += 1
+
+print(ans)
+
+# defaultdictを使えばkeyとvalueを同時に追加できる（ただし型に注意）
+# Sr = Sl + K になるSlの数を記録していくことで高速化している
