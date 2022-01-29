@@ -1,0 +1,19 @@
+s = list(input())
+k = int(input())
+ 
+cnt = [0]
+ 
+for i in range(len(s)):
+    if s[i] == '.':
+        cnt.append(cnt[i] + 1)
+    else:
+        cnt.append(cnt[i])
+ 
+ans = 0
+j = 0
+for i in range(len(cnt)):
+  while j < len(cnt) and cnt[j] - cnt[i] <= k:
+    j += 1
+  ans = max(j - i - 1, ans)
+ 
+print(ans)
