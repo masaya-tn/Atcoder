@@ -1,0 +1,28 @@
+N,Q = map(int, input().split())
+query = []
+for _ in range(Q):
+  query.append(list(map(int,input().split())))
+
+front = [0 for _ in range(N)]
+back = [0 for _ in range(N)]
+
+for q in query:
+  if q[0] == 1:
+    front[q[2] - 1] = q[1]
+    back[q[1] - 1] = q[2]
+  elif q[0] == 2:
+    front[q[2] - 1] = 0
+    back[q[1] - 1] = 0
+  else:
+    f = q[1]
+    while front[f - 1] != 0:
+      f = front[f - 1]
+    ok = 1
+    ans = []
+    while back[f - 1] != 0:
+      ans.append(f)
+      f = back[f - 1]
+    ans.append(f)
+    ans.insert(0,len(ans))
+    print(*ans)
+    
