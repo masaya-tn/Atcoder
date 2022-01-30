@@ -1,0 +1,17 @@
+N = int(input())
+XY = []
+
+for _ in range(N):
+  XY.append(tuple(map(int,input().split())))  
+s = set(XY)
+ans = 0
+for xy1 in XY:
+  for xy2 in XY:
+    #右上対角判定
+    if xy1[0] < xy2[0] and xy1[1] < xy2[1]:
+      if (xy1[0], xy2[1]) in s and (xy2[0], xy1[1]) in s:
+        ans += 1
+print(ans)
+
+# 12行目の座標の存在判定において、初めはリストを使っていたがそれだとものすごく遅かった、set型にするとACできた
+# https://www.haya-programming.com/entry/2018/04/04/121458
