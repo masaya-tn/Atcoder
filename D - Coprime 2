@@ -1,0 +1,29 @@
+N,M = map(int,input().split())
+A = list(map(int,input().split()))
+
+# Aから素因数を抽出
+a = set()
+for n in A:
+  while n % 2 == 0:
+    a.add(2)
+    n //= 2
+  f = 3
+  while f * f <= n:
+    if n % f == 0:
+        a.add(f)
+        n //= f
+    else:
+        f += 2
+  if n != 1:
+    a.add(n)
+
+k = [True] * M
+for i in a:
+  for j in range(i, M+1, i):
+    k[j-1] = False
+print(k.count(True))
+for i in range(M):
+  if k[i]:
+    print(i+1)
+
+  
