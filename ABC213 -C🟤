@@ -1,0 +1,29 @@
+from collections import defaultdict
+H,W,N = map(int,input().split())
+gyo = []
+retsu = []
+posi = []
+for i in range(N):
+  A,B = map(int,input().split())
+  gyo.append(A)
+  retsu.append(B)
+  posi.append([A,B])
+
+retsu = list(set(retsu))
+gyo = list(set(gyo))
+
+retsu.sort()
+gyo.sort()
+after_retsu = defaultdict(int)
+after_gyo = defaultdict(int)
+cnt = 1
+for i in retsu:
+  after_retsu[i] = cnt
+  cnt += 1
+cnt  = 1
+for i in gyo:
+  after_gyo[i] = cnt
+  cnt += 1
+
+for ab in posi:
+  print(after_gyo[ab[0]] ,after_retsu[ab[1]])
