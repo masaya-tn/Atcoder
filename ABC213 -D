@@ -1,0 +1,25 @@
+from collections import defaultdict
+import sys
+sys.setrecursionlimit(10**6)
+
+roots = defaultdict(list)
+N = int(input())
+for _ in range(N-1):
+  A,B = map(int,input().split())
+  roots[A].append(B)
+  roots[B].append(A)
+
+for root in roots.values():
+  root.sort()
+
+ans = []
+def dfs(now, befo):
+  ans.append(now)
+
+  for root in roots[now]:
+    if root != befo:
+      dfs(root, now)
+      ans.append(now)
+      
+dfs(1, -1)
+print(*ans)
