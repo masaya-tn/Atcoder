@@ -1,0 +1,37 @@
+from collections import defaultdict
+from collections import deque
+roads = defaultdict(list)
+towncolor = defaultdict(str)
+
+N,Q = map(int,input().split())
+for i in range(N-1):
+  a,b = map(int,input().split())
+  roads[a].append(b)
+  roads[b].append(a)
+
+towncolor[1] = 'white'
+towns = deque()
+towns.append(1)
+# color = 'white'
+while len(towns) > 0:
+  t = towns.popleft()
+  for i in roads[t]:
+    if not towncolor[i]:
+      if towncolor[t] == 'white':
+        towncolor[i] = 'black'
+      else:
+        towncolor[i] = 'white'
+      towns.append(i)
+  # if color == 'white':
+  #   color = 'black'
+  # else:
+  #   color = 'white' 元はcolorに一つ前の色を入れて切り替えていたが、それだと分岐したときに機能しない。
+  if len(towns) == 0:
+    break
+
+for i in range(Q):
+  c,d = map(int,input().split())
+  if towncolor[c] == towncolor[d]:
+    print('Town')
+  else:
+    print('Road')
