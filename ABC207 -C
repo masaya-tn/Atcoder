@@ -1,0 +1,27 @@
+N = int(input())
+T = []
+L = []
+R = []
+for _ in range(N):
+  t,l,r = map(int,input().split())
+  T.append(t)
+  L.append(l)
+  R.append(r)
+
+ans = 0
+for i in range(N):
+  if i == N - 1:
+    break
+  for j in range(i+1, N):
+    if R[i] == L[j]:
+      if (T[i] == 1 or T[i] == 3) and (T[j] == 1 or T[j] == 2):
+        ans += 1
+    elif L[i] == R[j]:
+      if (T[i] == 1 or T[i] == 2) and (T[j] == 1 or T[j] == 3):
+        ans += 1
+    elif R[i] < L[j] or R[j] < L[i]:
+      continue
+    else:
+      ans += 1
+
+print(ans)
