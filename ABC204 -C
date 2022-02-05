@@ -1,0 +1,22 @@
+from collections import defaultdict
+
+N,M = map(int,input().split())
+roads = defaultdict(list)
+for _ in range(M):
+  a,b = map(int,input().split())
+  roads[a].append(b)
+
+ans = 0
+for i in range(1, N + 1):
+  visited = set()
+  visited.add(i)
+  will = roads[i].copy()
+  while len(will) > 0:
+    t = will.pop()
+    if not t in visited:
+      visited.add(t)
+      will = will + roads[t]
+  ans += len(visited)
+print(ans)
+
+# 参照渡しでちょっと詰まった
