@@ -1,0 +1,47 @@
+N = int(input())
+S = list(input())
+S1 = S[0:N]
+S2 = S[N: 2*N]
+
+Q = int(input())
+reverse = False
+for _ in range(Q):
+  T,A,B = map(int,input().split())
+  if T == 1:
+    if reverse:
+      if A > N and B > N:
+        a = S[A - N - 1]
+        b = S[B - N - 1]
+        S[A - N - 1] = b
+        S[B - N - 1] = a
+      elif A > N and B <= N:
+        a = S[A - N - 1]
+        b = S[B + N -1]
+        S[A - N - 1] = b
+        S[B + N - 1] = a
+      elif A <= N and B > N:
+        a = S[A + N - 1]
+        b = S[B - N - 1]
+        S[A + N - 1] = b
+        S[B - N - 1] = a
+      else:
+        a = S[A + N - 1]
+        b = S[B + N - 1]
+        S[A + N - 1] = b
+        S[B + N - 1] = a
+    else:
+      a = S[A-1]
+      b = S[B-1]
+      S[A-1] = b
+      S[B-1] = a
+  else:
+    if reverse:
+      reverse = False
+    else:
+      reverse = True
+    
+if reverse:
+  S = S[N:] + S[0:N]
+  print(''.join(S))
+else:
+  print(''.join(S))
