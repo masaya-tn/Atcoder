@@ -1,0 +1,26 @@
+N, W = map(int, input().split())
+weight = [0]
+value = [0]
+INF=float("inf")
+for _ in range(N):
+  w,v = map(int,input().split())
+  weight.append(w)
+  value.append(v)
+
+dp = [[0] * 100001 for i in range(N + 1)]
+dp[0] = [INF for i in range(100001)]
+dp[0][0] = 0
+
+for i in range(N):
+  for j in range(100001):
+    if value[i + 1] > j:
+      dp[i + 1][j] = dp[i][j]
+    else:
+      dp[i + 1][j] = min(dp[i][j], dp[i][j - value[i + 1]] + weight[i + 1])
+
+ans = 0
+for i in range(100001):
+  if dp[-1][i] <= W:
+    ans = max(ans, i)
+print(ans)
+
