@@ -1,0 +1,28 @@
+from collections import defaultdict
+from collections import deque
+N,M = map(int,input().split())
+roads = defaultdict(list)
+
+for _ in range(M):
+  A,B = map(int,input().split())
+  roads[A].append(B)
+  roads[B].append(A)
+
+dist = [None for _ in range(N + 1)]
+dist[1] = 0
+cities = [1]
+cnt = [0 for _ in range(N+1)]
+cnt[1] = 1
+
+for now in cities:
+  for next in roads[now]:
+    if dist[next] == None:
+      dist[next] = dist[now] + 1
+      cities.append(next)
+      cnt[next] += cnt[now]
+    elif dist[next] == dist[now] + 1:
+      cnt[next] += cnt[now]
+      cnt[next] %= 10**9+7
+print(cnt[-1])
+
+# DPとBFS
