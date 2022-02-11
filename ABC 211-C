@@ -1,0 +1,12 @@
+from collections import defaultdict
+dp = defaultdict(int)
+S = list(input())
+chokudai = list('chokudai')
+for s in S:
+  if s == 'c':
+    dp['c'] += 1
+  elif s in chokudai:
+    posi = chokudai.index(s)
+    mod = dp[chokudai[posi - 1]] % ((10 ** 9) + 7)
+    dp[s] += mod
+print((dp['i']) % ((10 ** 9) + 7))
