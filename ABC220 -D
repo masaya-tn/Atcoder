@@ -1,0 +1,22 @@
+N = int(input())
+A = list(map(int,input().split()))
+
+dp = [[0 for i in range(10)] for _ in range(N)]
+dp[0][A[0]] += 1
+
+for i in range(N - 1):
+  for j in range(10):
+    if dp[i][j]:
+      
+      F = (j + A[i + 1]) % 10
+      G = (j * A[i + 1]) % 10
+
+      mod = dp[i][j] % 998244353
+      
+      dp[i + 1][F] += mod
+      dp[i + 1][G] += mod
+
+      
+for ans in dp[-1]:
+  print(ans % 998244353)
+
