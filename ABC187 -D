@@ -1,0 +1,19 @@
+N = int(input())
+Peop = []
+asum = 0
+list = []
+for i in range(N):
+  a,b = map(int,input().split())
+  asum += a
+  Peop.append([a,b])
+  list.append([(2 * a) + b, i])
+list.sort(reverse=True)
+A = asum
+T = 0
+cnt = 0
+ 
+while A >= T:
+  T += list[cnt][0]
+  cnt += 1
+print(cnt)
+ 
