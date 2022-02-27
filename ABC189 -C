@@ -1,0 +1,16 @@
+N = int(input())
+A = list(map(int,input().split()))
+ 
+ans = 0
+for l in range(N):
+  mini = 10 ** 5 + 1
+  len = 0
+  for r in range(l,N):
+    if A[r] < mini:
+      ans = max(ans,len * mini)
+      mini = A[r]
+    len += 1
+    
+  ans = max(ans, len * mini)
+ 
+print(ans)
