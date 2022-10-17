@@ -1,0 +1,6 @@
+X = int(input())
+x = X / 10
+if X >= 0:
+  print(X//10)
+else:
+  print((X//10))
