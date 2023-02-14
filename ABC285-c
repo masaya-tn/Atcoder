@@ -1,0 +1,11 @@
+S = input()
+alphabet = ['A', 'B', 'C', 'D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+slen = len(S)
+ans = 0
+for mozi in S:
+    keta = 26 ** (slen - 1)
+    index = alphabet.index(mozi) + 1
+    ans += keta * index
+    slen -= 1
+
+print(ans)
