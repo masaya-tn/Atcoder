@@ -1,0 +1,33 @@
+# coding: utf-8
+# Your code here!
+N, M = map(int,input().split())
+graphs = [[] for i in range(N)]
+
+for i in range(M):
+    u,v = map(int,input().split())
+    u -= 1
+    v -= 1
+    graphs[u].append(v)
+    graphs[v].append(u)
+
+seen = [0]*N
+
+# 未訪問のノードをノード伝いに訪問済みに変えていく
+def dfs(now):
+    seen[now] = 1
+    for to in graphs[now]:
+        if seen[to] == 1:
+            continue
+        dfs(to)
+    
+ans = 0
+# このfor文でまだつながりが検出されていないノードをさがしていく
+for i in range(N):
+    if seen[i]:
+        continue
+    ans += 1
+    dfs(i)
+
+print(ans)
+    
+    
