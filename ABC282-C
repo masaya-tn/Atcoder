@@ -1,0 +1,13 @@
+N = int(input())
+S = list(input())
+
+isWrapped = False
+index = 0
+for x in S:
+    if x == '"':
+        isWrapped = not isWrapped
+    if x == ',' and isWrapped == False:
+        S[index] = '.'
+    index += 1
+    
+print(''.join(S))
