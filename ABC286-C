@@ -1,0 +1,18 @@
+N, A, B = map(int, input().split(' '))
+S = input()
+
+ans = 10000**10
+for start in range(len(S)):
+    if start != 0:
+        newlist = S[start: len(S)] + S[0: start] 
+    else:
+        newlist = S
+    # 対応する文字がおなじである数を計算
+    eql = 0
+    for index in range(len(newlist) // 2):
+        if newlist[index] == newlist[len(newlist) - 1 - index]:
+            eql += 1
+    ans =  min(ans, start * A + ((len(S)//2) - eql) * B)
+
+print(ans)
+    
