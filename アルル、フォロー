@@ -1,0 +1,11 @@
+N, M = map(int, input().split())
+follow_relations = [[] for _ in range(N)]
+for i in range(M):
+    follower, followed = map(int, input().split())
+    follow_relations[follower].append(followed)
+
+for ans in follow_relations:
+    ans.sort()
+    for i in ans:
+        print(i, end = ' ')
+    print()
