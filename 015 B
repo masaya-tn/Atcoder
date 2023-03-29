@@ -1,0 +1,14 @@
+N,M = map(int, input().split())
+f_relation = [[] for _ in range(N)]
+for i in range(M):
+    A,B = map(int, input().split())
+    f_relation[A].append(B)
+    f_relation[B].append(A)
+
+ans = []
+for l in f_relation:
+    if len(ans) < len(l):
+        ans = l
+ans.sort()
+for i in ans:
+    print(i, end=' ')
