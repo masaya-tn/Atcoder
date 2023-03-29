@@ -1,0 +1,19 @@
+N,X = map(int, input().split())
+A = list(map(int, input().split()))
+wood = [0 for _ in range(N+1)]
+box = 1
+for parent in A:
+    wood[box] = parent
+    box += 1
+
+flg = 1
+ans = 0
+while flg == 1:
+    ans += 1
+    if wood[X] == 0:
+        flg = 0
+        continue
+    X = wood[X]
+    
+    
+print(ans)
