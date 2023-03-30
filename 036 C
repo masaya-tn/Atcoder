@@ -1,0 +1,23 @@
+import sys
+
+sys.setrecursionlimit(10000) 
+
+N = int(input())
+P = list(map(int, input().split()))
+
+graph = [[] for _ in range(N)]
+for child in range(1, N):
+    graph[P[child-1]].append(child)
+
+ans = [0 for _ in range(N)]
+
+def dps(depth, parent):
+    ans[parent] = depth
+    if len(graph[parent]) > 0:
+        depth += 1
+        for child in graph[parent]:
+            dps(depth, child)
+
+dps(0, 0)
+for a in ans:
+    print(a)
