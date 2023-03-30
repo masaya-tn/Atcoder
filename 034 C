@@ -1,0 +1,21 @@
+import sys
+
+sys.setrecursionlimit(10000) 
+
+N = int(input())
+P = list(map(int, input().split()))
+
+graph = [[] for _ in range(N)]
+child = 1
+for p in P:
+    graph[p].append(child)
+    child += 1
+
+def dps(parent):
+    print(parent)
+    if len(graph[parent]) > 0:
+        graph[parent].sort()
+        for ch in graph[parent]:
+            dps(ch)
+
+dps(0)
