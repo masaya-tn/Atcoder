@@ -1,0 +1,22 @@
+import sys
+
+sys.setrecursionlimit(10000) 
+
+N = int(input())
+P = list(map(int, input().split()))
+
+wood = [[] for _ in range(N)]
+
+for c in range(1,N):
+    wood[P[c-1]].append(c)
+
+ans = []
+def dfs(parent, depth):
+    ans.append(depth)
+        
+    if len(wood[parent]) > 0:
+        for c in wood[parent]:
+            dfs(c, depth+1)
+
+dfs(0,0)
+print(max(ans))
