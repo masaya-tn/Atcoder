@@ -1,0 +1,16 @@
+
+N,M = map(int, input().split())
+links = [[] for _ in range(N+1)]
+for i in range(M):
+    a,b = map(int, input().split())
+    links[a].append(b)
+    links[b].append(a)
+visited = [-1 for _ in range(N)]
+next_nodes = [[] for i in range(N+1)]
+next_nodes[0].extend(links[0])
+for k in range(N):
+    for next_node in next_nodes[k]:
+        visited[next_node] = 1
+        next_nodes[k+1].append(next_node)
+    
+print(next_nodes)
