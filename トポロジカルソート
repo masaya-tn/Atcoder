@@ -1,0 +1,31 @@
+from collections import deque
+
+def topological_sort(graph):
+    # ノードの入次数を計算する
+    in_degree = {node: 0 for node in graph}
+    for node in graph:
+        for neighbor in graph[node]:
+            in_degree[neighbor] += 1
+
+    # 入次数が0のノードをキューに追加する
+    queue = deque([node for node in in_degree if in_degree[node] == 0])
+
+    # ソート結果を格納するリスト
+    sorted_nodes = []
+
+    # 全てのノードがソート結果に含まれるまで処理を繰り返す
+    while queue:
+        # キューの先頭からノードを取り出し、ソート結果に追加する
+        node = queue.popleft()
+        sorted_nodes.append(node)
+
+        # 取り出したノードに隣接するノードの入次数を1減らす
+        for neighbor in graph[node]:
+            in_degree[neighbor] -= 1
+
+            # 入次数が0になった場合はキューに追加する
+            if in_degree[neighbor] == 0:
+                queue.append(neighbor)
+
+    # ソート結果を返す
+    return sorted_nodes
