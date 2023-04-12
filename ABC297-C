@@ -1,0 +1,9 @@
+H,W = map(int, input().split())
+room = []
+for _ in range(H):
+    S = list(input())
+    for w in range(W-1):
+        if S[w] == 'T' and S[w + 1] == 'T':
+            S[w] = 'P'
+            S[w+1] = 'C'
+    print(''.join(S))
