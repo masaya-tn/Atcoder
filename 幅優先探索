@@ -1,0 +1,34 @@
+# coding: utf-8
+# Your code here!
+
+N, M = map(int, input().split())
+G = [[] for i in range(N)]
+for i in range(M):
+    A, B = map(int, input().split())
+    
+    G[A].append(B)
+    G[B].append(A)
+
+dist = [-1] * N
+nodes = [[] for i in range(N)]
+
+dist[0] = 0
+nodes[0] = [0]
+
+for cnt_search in range(1, N):
+    for pre_node in nodes[cnt_search-1]:
+        for next_node in G[pre_node]:
+            if dist[next_node] != -1:
+                continue
+            dist[next_node] = cnt_search
+            nodes[cnt_search].append(next_node)
+            
+            
+for k in range(N):
+    nodes[k].sort()
+    print(*nodes[k])
+            
+            
+            
+            
+            
