@@ -1,0 +1,12 @@
+N = int(input())
+A = list(map(int, input().split()))
+ans = 0
+wait_pairings = 
+for a in A:
+    if a in wait_pairings:
+        ans += 1
+        wait_pairings.remove(a)
+    else:
+        wait_pairings.add(a)
+
+print(ans)
