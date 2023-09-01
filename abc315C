@@ -1,0 +1,23 @@
+N = gets.to_i
+Ices = []
+
+N.times do |i|
+    f, s = gets.chomp.split.map(&:to_i)
+    Ices << [f, s]
+end
+
+sorted_Ices = Ices.sort_by{|v| -v[1]}
+s_max = sorted_Ices[0][1]
+flv_type = sorted_Ices[0][0]
+a = -1
+
+N.times do |i|
+    next if i == 0
+    if sorted_Ices[i][0] == flv_type
+        a = [a, sorted_Ices[i][1] / 2].max
+    else
+        a = [a, sorted_Ices[i][1]].max
+    end
+end
+
+p s_max + a
